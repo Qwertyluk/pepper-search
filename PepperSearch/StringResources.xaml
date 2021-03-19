@@ -11,9 +11,12 @@
     <system:String x:Key="spanClassNameDiscountPercentage">space--ml-1 size--all-l size--fromW3-xl cept-discount</system:String>
     <system:String x:Key="divClassNameHeaderMeta">threadGrid-headerMeta</system:String>
     <system:String x:Key="divClassNameVoteBox">cept-vote-box vote-box overflow--hidden border border--color-borderGrey bRad--a</system:String>
-    <system:String x:Key="spanClassNameVoteScore">cept-vote-temp vote-temp vote-temp--hot</system:String>
+    <system:String x:Key="spanClassNameScoreHot">cept-vote-temp vote-temp vote-temp--hot</system:String>
+    <system:String x:Key="spanClassNameScoreBurn">cept-vote-temp vote-temp vote-temp--burn</system:String>
     <system:String x:Key="divClassNameThreadBody">threadGrid-body</system:String>
+    <system:String x:Key="divClassNameThreadBodySpace">threadGrid-body space--v-1</system:String>
     <system:String x:Key="divClassNameBodySpace">space--t-2 hide--empty</system:String>
     <system:String x:Key="divClassNameSpaceContent">userHtml userHtml-content</system:String>
     <system:String x:Key="buttonContentRefresh">Refresh</system:String>
+    <system:String x:Key="divClassNameUserHtml">userHtml userHtml-content</system:String>
 </ResourceDictionary>

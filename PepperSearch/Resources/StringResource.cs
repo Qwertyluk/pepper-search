@@ -87,11 +87,19 @@ namespace PepperSearch
             }
         }
 
-        public static string SpanClassNameVoteScore
+        public static string SpanClassNameScoreHot
         {
             get
             {
-                return (string)Application.Current.FindResource("spanClassNameVoteScore");
+                return (string)Application.Current.FindResource("spanClassNameScoreHot");
+            }
+        }
+
+        public static string SpanClassNameScoreBurn
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("spanClassNameScoreBurn");
             }
         }
 
@@ -100,6 +108,14 @@ namespace PepperSearch
             get
             {
                 return (string)Application.Current.FindResource("divClassNameThreadBody");
+            }
+        }
+
+        public static string DivClassNameThreadBodySpace
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("divClassNameThreadBodySpace");
             }
         }
 
@@ -124,6 +140,14 @@ namespace PepperSearch
             get
             {
                 return (string)Application.Current.FindResource("buttonContentRefresh");
+            }
+        }
+
+        public static string DivClassNameUserHtml
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("divClassNameUserHtml");
             }
         }
     }

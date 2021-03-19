@@ -20,11 +20,24 @@ namespace PepperSearch
 
             try
             {
-                description = node.Descendants(HtmlTags.DIV).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.DivClassNameThreadBody).First()
-                    .Descendants(HtmlTags.DIV).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.DivClassNameBodySpace).First()
-                    .Descendants(HtmlTags.DIV).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.DivClassNameSpaceContent).First()
-                    .Descendants(HtmlTags.DIV).First().InnerHtml;
-                description = description.Substring(0, description.IndexOf("<"));
+                if (node.ChildNodes.Any(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.DivClassNameThreadBody))
+                {
+                    description = node.Descendants(HtmlTags.DIV).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.DivClassNameThreadBody).First()
+                        .Descendants(HtmlTags.DIV).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.DivClassNameBodySpace).First()
+                        .Descendants(HtmlTags.DIV).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.DivClassNameSpaceContent).First()
+                        .Descendants(HtmlTags.DIV).First().InnerHtml;
+                }
+                else if (node.ChildNodes.Any(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.DivClassNameThreadBodySpace))
+                {
+                    description = node.Descendants(HtmlTags.DIV).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.DivClassNameThreadBodySpace).First()
+                        .Descendants(HtmlTags.DIV).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.DivClassNameUserHtml).First()
+                        .Descendants(HtmlTags.DIV).First().InnerHtml;
+                }
+
+                if (description.Contains("<"))
+                {
+                    description = description.Substring(0, description.IndexOf("<"));
+                }
                 description = description.Trim(new char[] { '\t', ' ', '…' });
             }
             catch (InvalidOperationException) { }

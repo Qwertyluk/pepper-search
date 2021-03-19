@@ -20,10 +20,21 @@ namespace PepperSearch
 
             try
             {
-                string strScore = node.Descendants(HtmlTags.DIV).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.DivClassNameHeaderMeta).First()
+                string strScore = String.Empty;
+
+                HtmlNode childNode = node.Descendants(HtmlTags.DIV).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.DivClassNameHeaderMeta).First()
                     .Descendants(HtmlTags.DIV).First()
-                    .Descendants(HtmlTags.DIV).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.DivClassNameVoteBox).First()
-                    .Descendants(HtmlTags.SPAN).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.SpanClassNameVoteScore).First().InnerText;
+                    .Descendants(HtmlTags.DIV).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.DivClassNameVoteBox).First();
+
+                if (childNode.ChildNodes.Any(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.SpanClassNameScoreHot))
+                {
+                    strScore = childNode.Descendants(HtmlTags.SPAN).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.SpanClassNameScoreHot).First().InnerHtml;
+                }
+                else if (childNode.ChildNodes.Any(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.SpanClassNameScoreBurn))
+                {
+                    strScore = childNode.Descendants(HtmlTags.SPAN).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.SpanClassNameScoreBurn).First().InnerHtml;
+                }
+
                 strScore = new string(strScore.Where(c => !Char.IsWhiteSpace(c)).ToArray()).RemoveWhitespace();
                 strScore = strScore.Remove(strScore.Length - 1);
                 score = Convert.ToInt32(strScore);
