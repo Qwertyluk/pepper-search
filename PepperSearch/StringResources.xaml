@@ -19,4 +19,6 @@
     <system:String x:Key="divClassNameSpaceContent">userHtml userHtml-content</system:String>
     <system:String x:Key="buttonContentRefresh">Refresh</system:String>
     <system:String x:Key="divClassNameUserHtml">userHtml userHtml-content</system:String>
+    <system:String x:Key="FROM">From</system:String>
+    <system:String x:Key="TO">To</system:String>
 </ResourceDictionary>

@@ -7,7 +7,22 @@
         mc:Ignorable="d"
         Title="PepperSearch" Height="450" Width="800">
     <DockPanel>
-        <Button x:Name="BtnRefresh" DockPanel.Dock="Bottom" Margin="5" Click="BtnRefresh_Click" />
+        <Grid DockPanel.Dock="Bottom" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="BtnRefresh" Margin="5" Click="BtnRefresh_Click" Grid.Column="0"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label x:Name="LblFrom"/>
+                <TextBox x:Name="TxtFrom" Text="1" VerticalContentAlignment="Center" MinWidth="25" TextAlignment="Center" PreviewTextInput="TxtFrom_PreviewTextInput" />
+            </StackPanel>
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label x:Name="LblTo"/>
+                <TextBox x:Name="TxtTo" Text="10" VerticalContentAlignment="Center" MinWidth="25" TextAlignment="Center" PreviewTextInput="TxtTo_PreviewTextInput" />
+            </StackPanel>
+        </Grid>
         <DataGrid x:Name="DgData" Margin="5" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="3*">

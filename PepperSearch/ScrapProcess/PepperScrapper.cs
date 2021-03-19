@@ -77,11 +77,11 @@ namespace PepperSearch
         /// Scraps pepper website in asynchronous way.
         /// </summary>
         /// <param name="number">Number of pages to scrap.</param>
-        public async void ScrapDataAsync(int number)
+        public async void ScrapDataAsync(int startPage, int endPage)
         {
             this.ScrappedData.Clear();
 
-            for (int i = 1; i <= number; i++)
+            for (int i = startPage; i <= endPage; i++)
             {
                 HtmlProvider htmlProvider = new HtmlProvider();
                 string uri = StringResource.PepperHomePageLink + i;

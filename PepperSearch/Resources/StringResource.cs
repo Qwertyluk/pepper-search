@@ -150,5 +150,21 @@ namespace PepperSearch
                 return (string)Application.Current.FindResource("divClassNameUserHtml");
             }
         }
+
+        public static string FROM
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("FROM");
+            }
+        }
+
+        public static string TO
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("TO");
+            }
+        }
     }
 }

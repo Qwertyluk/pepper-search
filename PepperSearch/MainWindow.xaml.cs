@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -30,8 +31,7 @@ namespace PepperSearch
         /// <param name="e"></param>
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
         {
-            int numberOfPages = 10;
-            scrapper.ScrapDataAsync(numberOfPages);
+            scrapper.ScrapDataAsync(Convert.ToInt32(this.TxtFrom.Text), Convert.ToInt32(this.TxtTo.Text));
         }
 
         /// <summary>
@@ -56,6 +56,9 @@ namespace PepperSearch
                 Source = this.scrapper
             };
             this.DgData.SetBinding(DataGrid.ItemsSourceProperty, b);
+
+            this.LblFrom.Content = StringResource.FROM;
+            this.LblTo.Content = StringResource.TO;
         }
 
         /// <summary>
@@ -67,6 +70,26 @@ namespace PepperSearch
         {
             Hyperlink link = (Hyperlink)e.OriginalSource;
             Process.Start(link.NavigateUri.AbsoluteUri);
+        }
+
+        /// <summary>
+        /// Prevents non-numeric input in the textbox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtFrom_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = !Int32.TryParse(e.Text, out _);
+        }
+
+        /// <summary>
+        /// Prevents non-numeric input in the textbox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtTo_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = !Int32.TryParse(e.Text, out _);
         }
     }
 }
