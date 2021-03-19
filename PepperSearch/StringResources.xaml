@@ -15,4 +15,5 @@
     <system:String x:Key="divClassNameThreadBody">threadGrid-body</system:String>
     <system:String x:Key="divClassNameBodySpace">space--t-2 hide--empty</system:String>
     <system:String x:Key="divClassNameSpaceContent">userHtml userHtml-content</system:String>
+    <system:String x:Key="buttonContentRefresh">Refresh</system:String>
 </ResourceDictionary>

@@ -118,5 +118,13 @@ namespace PepperSearch
                 return (string)Application.Current.FindResource("divClassNameSpaceContent");
             }
         }
+
+        public static string ButtonContentRefresh
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("buttonContentRefresh");
+            }
+        }
     }
 }

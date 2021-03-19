@@ -1,5 +1,6 @@
 ﻿using HtmlAgilityPack;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace PepperSearch
@@ -40,7 +41,7 @@ namespace PepperSearch
         /// <summary>
         /// Scrapped data.
         /// </summary>
-        public List<Discount> ScrappedData { get; private set; }
+        public ObservableCollection<Discount> ScrappedData { get; private set; }
 
         /// <summary>
         /// Creates an instance of the class.
@@ -69,7 +70,7 @@ namespace PepperSearch
             this.scoreScrapper = scoreScrapper;
             this.descriptionScrapper = descriptionScrapper;
 
-            this.ScrappedData = new List<Discount>();
+            this.ScrappedData = new ObservableCollection<Discount>();
         }
 
         /// <summary>
@@ -78,11 +79,13 @@ namespace PepperSearch
         /// <param name="number">Number of pages to scrap.</param>
         public async void ScrapDataAsync(int number)
         {
+            this.ScrappedData.Clear();
+
             for (int i = 1; i <= number; i++)
             {
                 HtmlProvider htmlProvider = new HtmlProvider();
                 string uri = StringResource.PepperHomePageLink + i;
-                string html = await htmlProvider.GetHtmlAsync(StringResource.PepperHomePageLink);
+                string html = await htmlProvider.GetHtmlAsync(uri);
 
                 HtmlDocument htmlDoc = new HtmlDocument();
                 htmlDoc.LoadHtml(html);
