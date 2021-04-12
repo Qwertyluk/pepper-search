@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="FROM">From</system:String>
+    <system:String x:Key="TO">To</system:String>
+    <system:String x:Key="ALL">All</system:String>
+    <system:String x:Key="ELECTRONICS">Electronics</system:String>
+    <system:String x:Key="GAMING">Gaming</system:String>
+    <system:String x:Key="HOME">Home</system:String>
+    <system:String x:Key="FASHION">Fashion</system:String>
+    <system:String x:Key="GARDEN">Garden</system:String>
+    <system:String x:Key="HEALTH">Health</system:String>
+    <system:String x:Key="FAMILY">Family</system:String>
+    <system:String x:Key="GROCERIES">Groceries</system:String>
+    <system:String x:Key="MOTORIZATION">Motorization</system:String>
+    <system:String x:Key="CULTURE">Culture</system:String>
+    <system:String x:Key="SPORT">Sport</system:String>
+    <system:String x:Key="INTERNET">Internet</system:String>
+    <system:String x:Key="FINANCE">Finance</system:String>
+    <system:String x:Key="SERVICES">Services</system:String>
+    <system:String x:Key="TRAVEL">Travel</system:String>
+    <system:String x:Key="REFRESH">Refresh</system:String>
+</ResourceDictionary>

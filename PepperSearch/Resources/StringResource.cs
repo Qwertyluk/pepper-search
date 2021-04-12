@@ -11,7 +11,7 @@ namespace PepperSearch
         {
             get
             {
-                return (string)Application.Current.FindResource("pepperHomePageLink");
+                return (string)Application.Current.FindResource("PepperHomePageLink");
             }
         }
 
@@ -19,7 +19,7 @@ namespace PepperSearch
         {
             get
             {
-                return (string)Application.Current.FindResource("divClassNameThread");
+                return (string)Application.Current.FindResource("DivClassNameThread");
             }
         }
 
@@ -27,7 +27,7 @@ namespace PepperSearch
         {
             get
             {
-                return (string)Application.Current.FindResource("divClassNameThreadTitle");
+                return (string)Application.Current.FindResource("DivClassNameThreadTitle");
             }
         }
 
@@ -35,7 +35,7 @@ namespace PepperSearch
         {
             get
             {
-                return (string)Application.Current.FindResource("spanClassNameDiscount");
+                return (string)Application.Current.FindResource("SpanClassNameDiscount");
             }
         }
 
@@ -43,7 +43,7 @@ namespace PepperSearch
         {
             get
             {
-                return (string)Application.Current.FindResource("spanClassNameActualPrice");
+                return (string)Application.Current.FindResource("SpanClassNameActualPrice");
             }
         }
 
@@ -51,7 +51,7 @@ namespace PepperSearch
         {
             get
             {
-                return (string)Application.Current.FindResource("spanClassNamePreviousAndDiscount");
+                return (string)Application.Current.FindResource("SpanClassNamePreviousAndDiscount");
             }
         }
 
@@ -59,7 +59,7 @@ namespace PepperSearch
         {
             get
             {
-                return (string)Application.Current.FindResource("spanClassNamePrevioudPrice");
+                return (string)Application.Current.FindResource("SpanClassNamePrevioudPrice");
             }
         }
 
@@ -67,7 +67,7 @@ namespace PepperSearch
         {
             get
             {
-                return (string)Application.Current.FindResource("spanClassNameDiscountPercentage");
+                return (string)Application.Current.FindResource("SpanClassNameDiscountPercentage");
             }
         }
 
@@ -75,7 +75,7 @@ namespace PepperSearch
         {
             get
             {
-                return (string)Application.Current.FindResource("divClassNameHeaderMeta");
+                return (string)Application.Current.FindResource("DivClassNameHeaderMeta");
             }
         }
 
@@ -83,7 +83,7 @@ namespace PepperSearch
         {
             get
             {
-                return (string)Application.Current.FindResource("divClassNameVoteBox");
+                return (string)Application.Current.FindResource("DivClassNameVoteBox");
             }
         }
 
@@ -91,7 +91,7 @@ namespace PepperSearch
         {
             get
             {
-                return (string)Application.Current.FindResource("spanClassNameScoreHot");
+                return (string)Application.Current.FindResource("SpanClassNameScoreHot");
             }
         }
 
@@ -99,7 +99,7 @@ namespace PepperSearch
         {
             get
             {
-                return (string)Application.Current.FindResource("spanClassNameScoreBurn");
+                return (string)Application.Current.FindResource("SpanClassNameScoreBurn");
             }
         }
 
@@ -107,7 +107,7 @@ namespace PepperSearch
         {
             get
             {
-                return (string)Application.Current.FindResource("divClassNameThreadBody");
+                return (string)Application.Current.FindResource("DivClassNameThreadBody");
             }
         }
 
@@ -115,7 +115,7 @@ namespace PepperSearch
         {
             get
             {
-                return (string)Application.Current.FindResource("divClassNameThreadBodySpace");
+                return (string)Application.Current.FindResource("DivClassNameThreadBodySpace");
             }
         }
 
@@ -123,7 +123,7 @@ namespace PepperSearch
         {
             get
             {
-                return (string)Application.Current.FindResource("divClassNameBodySpace");
+                return (string)Application.Current.FindResource("DivClassNameBodySpace");
             }
         }
 
@@ -131,7 +131,7 @@ namespace PepperSearch
         {
             get
             {
-                return (string)Application.Current.FindResource("divClassNameSpaceContent");
+                return (string)Application.Current.FindResource("DivClassNameSpaceContent");
             }
         }
 
@@ -139,7 +139,7 @@ namespace PepperSearch
         {
             get
             {
-                return (string)Application.Current.FindResource("buttonContentRefresh");
+                return (string)Application.Current.FindResource("REFRESH");
             }
         }
 
@@ -147,7 +147,7 @@ namespace PepperSearch
         {
             get
             {
-                return (string)Application.Current.FindResource("divClassNameUserHtml");
+                return (string)Application.Current.FindResource("DivClassNameUserHtml");
             }
         }
 
@@ -164,6 +164,134 @@ namespace PepperSearch
             get
             {
                 return (string)Application.Current.FindResource("TO");
+            }
+        }
+
+        public static string ALL
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("ALL");
+            }
+        }
+
+        public static string ELECTRONICS
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("ELECTRONICS");
+            }
+        }
+
+        public static string GAMING
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("GAMING");
+            }
+        }
+
+        public static string HOME
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("HOME");
+            }
+        }
+
+        public static string FASHION
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("FASHION");
+            }
+        }
+
+        public static string GARDEN
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("GARDEN");
+            }
+        }
+
+        public static string HEALTH
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("HEALTH");
+            }
+        }
+
+        public static string FAMILY
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("FAMILY");
+            }
+        }
+
+        public static string GROCERIES
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("GROCERIES");
+            }
+        }
+
+        public static string MOTORIZATION
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("MOTORIZATION");
+            }
+        }
+
+        public static string CULTURE
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("CULTURE");
+            }
+        }
+
+        public static string SPORT
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("SPORT");
+            }
+        }
+
+        public static string INTERNET
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("INTERNET");
+            }
+        }
+
+        public static string FINANCE
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("FINANCE");
+            }
+        }
+
+        public static string SERVICES
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("SERVICES");
+            }
+        }
+
+        public static string TRAVEL
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("TRAVEL");
             }
         }
     }

@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace PepperSearch
 {
     /// <summary>
     /// Represents a pepper website scrapper.
     /// </summary>
-    public class PepperScrapper
+    public class PepperScrapper : IScrapper
     {
         /// <summary>
         /// A title scrapper.
@@ -38,10 +39,6 @@ namespace PepperSearch
         /// A description scrapper.
         /// </summary>
         private readonly IDescriptionScrapper descriptionScrapper;
-        /// <summary>
-        /// Scrapped data.
-        /// </summary>
-        public ObservableCollection<Discount> ScrappedData { get; private set; }
 
         /// <summary>
         /// Creates an instance of the class.
@@ -69,17 +66,15 @@ namespace PepperSearch
             this.discountScrapper = discountScrapper;
             this.scoreScrapper = scoreScrapper;
             this.descriptionScrapper = descriptionScrapper;
-
-            this.ScrappedData = new ObservableCollection<Discount>();
         }
 
         /// <summary>
         /// Scraps pepper website in asynchronous way.
         /// </summary>
         /// <param name="number">Number of pages to scrap.</param>
-        public async void ScrapDataAsync(int startPage, int endPage)
+        public async Task<List<Discount>> ScrapDataAsync(int startPage, int endPage, PepperGroup group)
         {
-            this.ScrappedData.Clear();
+            List<Discount> discounts = new List<Discount>();
 
             for (int i = startPage; i <= endPage; i++)
             {
@@ -105,9 +100,16 @@ namespace PepperSearch
                         Description = this.descriptionScrapper.GetDescription(node),
                     };
 
-                    this.ScrappedData.Add(discount);
+                    discounts.Add(discount);
                 }
             }
+
+            return discounts;
         }
+
+        /*private string GenerateUri(PepperGroup group)
+        {
+
+        }*/
     }
 }

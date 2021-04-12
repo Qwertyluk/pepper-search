@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:PepperSearch"
         mc:Ignorable="d"
         Title="PepperSearch" Height="450" Width="800">
+    <Window.DataContext>
+        <local:ScrapperViewModel/>
+    </Window.DataContext>
     <DockPanel>
         <Grid DockPanel.Dock="Bottom" Margin="5">
             <Grid.ColumnDefinitions>
@@ -13,19 +16,123 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="BtnRefresh" Margin="5" Click="BtnRefresh_Click" Grid.Column="0"/>
+            <Button x:Name="BtnRefresh" Margin="5" Grid.Column="0" 
+                    Command="{Binding Path=ScrapCommand}"
+                    Content="{StaticResource REFRESH}"/>
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label x:Name="LblFrom"/>
-                <TextBox x:Name="TxtFrom" Text="1" VerticalContentAlignment="Center" MinWidth="25" TextAlignment="Center" PreviewTextInput="TxtFrom_PreviewTextInput" />
+                <Label x:Name="LblFrom" Content="{StaticResource FROM}"/>
+                <TextBox x:Name="TxtFrom" Text="{Binding Path = StartPage}" 
+                         VerticalContentAlignment="Center" MinWidth="25" TextAlignment="Center" PreviewTextInput="TxtFrom_PreviewTextInput" />
             </StackPanel>
             <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label x:Name="LblTo"/>
-                <TextBox x:Name="TxtTo" Text="10" VerticalContentAlignment="Center" MinWidth="25" TextAlignment="Center" PreviewTextInput="TxtTo_PreviewTextInput" />
+                <Label x:Name="LblTo" Content="{StaticResource TO}"/>
+                <TextBox x:Name="TxtTo" Text="{Binding Path = EndPage}" 
+                         VerticalContentAlignment="Center" MinWidth="25" 
+                         TextAlignment="Center" PreviewTextInput="TxtTo_PreviewTextInput" />
             </StackPanel>
         </Grid>
-        <DataGrid x:Name="DgData" Margin="5" AutoGenerateColumns="False" IsReadOnly="True">
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.Resources>
+                <local:PepperGroupConverter x:Key="PepperGroupConverter"/>
+            </Grid.Resources>
+            <RadioButton x:Name="RdoAll" Grid.Row="0" Grid.Column="0"
+                         Content="{StaticResource ALL}"
+                         IsChecked="{Binding Path = PepperGroup, 
+                            Converter = {StaticResource PepperGroupConverter},
+                            ConverterParameter = {x:Static local:PepperGroup.All}}"/>
+            <RadioButton x:Name="RdoElectronics" Grid.Row="0" Grid.Column="1"
+                         Content="{StaticResource ELECTRONICS}"
+                         IsChecked="{Binding Path = PepperGroup, 
+                            Converter = {StaticResource PepperGroupConverter},
+                            ConverterParameter = {x:Static local:PepperGroup.Electronics}}"/>
+            <RadioButton x:Name="RdoGaming" Grid.Row="0" Grid.Column="2"
+                         Content="{StaticResource GAMING}"
+                         IsChecked="{Binding Path = PepperGroup, 
+                            Converter = {StaticResource PepperGroupConverter},
+                            ConverterParameter = {x:Static local:PepperGroup.Gaming}}"/>
+            <RadioButton x:Name="RdoHome" Grid.Row="0" Grid.Column="3"
+                         Content="{StaticResource HOME}"
+                         IsChecked="{Binding Path = PepperGroup, 
+                            Converter = {StaticResource PepperGroupConverter},
+                            ConverterParameter = {x:Static local:PepperGroup.Home}}"/>
+            <RadioButton x:Name="RdoFashion" Grid.Row="0" Grid.Column="4"
+                         Content="{StaticResource FASHION}"
+                         IsChecked="{Binding Path = PepperGroup, 
+                            Converter = {StaticResource PepperGroupConverter},
+                            ConverterParameter = {x:Static local:PepperGroup.Fashion}}"/>
+            <RadioButton x:Name="RdoGarden" Grid.Row="0" Grid.Column="5"
+                         Content="{StaticResource GARDEN}"
+                         IsChecked="{Binding Path = PepperGroup, 
+                            Converter = {StaticResource PepperGroupConverter},
+                            ConverterParameter = {x:Static local:PepperGroup.Garden}}"/>
+            <RadioButton x:Name="RdoHealth" Grid.Row="0" Grid.Column="6"
+                         Content="{StaticResource HEALTH}"
+                         IsChecked="{Binding Path = PepperGroup, 
+                            Converter = {StaticResource PepperGroupConverter},
+                            ConverterParameter = {x:Static local:PepperGroup.Health}}"/>
+            <RadioButton x:Name="RdoFamily" Grid.Row="0" Grid.Column="7"
+                         Content="{StaticResource FAMILY}"
+                         IsChecked="{Binding Path = PepperGroup, 
+                            Converter = {StaticResource PepperGroupConverter},
+                            ConverterParameter = {x:Static local:PepperGroup.Family}}"/>
+            <RadioButton x:Name="RdoGroceries" Grid.Row="1" Grid.Column="0"
+                         Content="{StaticResource GROCERIES}"
+                         IsChecked="{Binding Path = PepperGroup, 
+                            Converter = {StaticResource PepperGroupConverter},
+                            ConverterParameter = {x:Static local:PepperGroup.Groceries}}"/>
+            <RadioButton x:Name="RdoMotorization" Grid.Row="1" Grid.Column="1"
+                         Content="{StaticResource MOTORIZATION}"
+                         IsChecked="{Binding Path = PepperGroup, 
+                            Converter = {StaticResource PepperGroupConverter},
+                            ConverterParameter = {x:Static local:PepperGroup.Motorization}}"/>
+            <RadioButton x:Name="RdoCulture" Grid.Row="1" Grid.Column="2"
+                         Content="{StaticResource CULTURE}"
+                         IsChecked="{Binding Path = PepperGroup, 
+                            Converter = {StaticResource PepperGroupConverter},
+                            ConverterParameter = {x:Static local:PepperGroup.Culture}}"/>
+            <RadioButton x:Name="RdoSport" Grid.Row="1" Grid.Column="3"
+                         Content="{StaticResource SPORT}"
+                         IsChecked="{Binding Path = PepperGroup, 
+                            Converter = {StaticResource PepperGroupConverter},
+                            ConverterParameter = {x:Static local:PepperGroup.Sport}}"/>
+            <RadioButton x:Name="RdoInternet" Grid.Row="1" Grid.Column="4"
+                         Content="{StaticResource INTERNET}"
+                         IsChecked="{Binding Path = PepperGroup, 
+                            Converter = {StaticResource PepperGroupConverter},
+                            ConverterParameter = {x:Static local:PepperGroup.Internet}}"/>
+            <RadioButton x:Name="RdoFinance" Grid.Row="1" Grid.Column="5"
+                         Content="{StaticResource FINANCE}"
+                         IsChecked="{Binding Path = PepperGroup, 
+                            Converter = {StaticResource PepperGroupConverter},
+                            ConverterParameter = {x:Static local:PepperGroup.Finance}}"/>
+            <RadioButton x:Name="RdoServices" Grid.Row="1" Grid.Column="6"
+                         Content="{StaticResource SERVICES}"
+                         IsChecked="{Binding Path = PepperGroup, 
+                            Converter = {StaticResource PepperGroupConverter},
+                            ConverterParameter = {x:Static local:PepperGroup.Services}}"/>
+            <RadioButton x:Name="RdoTravel" Grid.Row="1" Grid.Column="7"
+                         Content="{StaticResource TRAVEL}"
+                         IsChecked="{Binding Path = PepperGroup, 
+                            Converter = {StaticResource PepperGroupConverter},
+                            ConverterParameter = {x:Static local:PepperGroup.Travel}}"/>
+        </Grid>
+        <DataGrid x:Name="DgData" Margin="5" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Path = Discounts}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="3*">
+                <DataGridTextColumn Header="Title" Binding="{Binding Path = Title}" Width="3*">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -38,7 +145,7 @@
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridHyperlinkColumn Header="Link" Binding="{Binding Link}" Width="3*">
+                <DataGridHyperlinkColumn Header="Link" Binding="{Binding Path = Link}" Width="3*">
                     <DataGridHyperlinkColumn.ElementStyle>
                         <Style>
                             <EventSetter Event="Hyperlink.Click" Handler="DG_Hyperlink_Click"/>
@@ -50,7 +157,7 @@
                         </Style>
                     </DataGridHyperlinkColumn.HeaderStyle>
                 </DataGridHyperlinkColumn>
-                <DataGridTextColumn Header="Current Price" Binding="{Binding ActualPrice}" Width="*">
+                <DataGridTextColumn Header="Current Price" Binding="{Binding Path = ActualPrice}" Width="*">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -62,7 +169,7 @@
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Previous Price" Binding="{Binding PreviousPrice}" Width="*">
+                <DataGridTextColumn Header="Previous Price" Binding="{Binding Path = PreviousPrice}" Width="*">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -74,7 +181,7 @@
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="% Discount" Binding="{Binding Value}" Width="*">
+                <DataGridTextColumn Header="% Discount" Binding="{Binding Path = Value}" Width="*">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -86,7 +193,7 @@
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Score" Binding="{Binding Score}" Width="*">
+                <DataGridTextColumn Header="Score" Binding="{Binding Path = Score}" Width="*">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -98,7 +205,7 @@
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="6*">
+                <DataGridTextColumn Header="Description" Binding="{Binding Path = Description}" Width="6*">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center"/>

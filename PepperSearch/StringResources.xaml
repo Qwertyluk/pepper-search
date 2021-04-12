@@ -1,24 +1,21 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
-    <system:String x:Key="pepperHomePageLink">https://www.pepper.pl/?page=</system:String>
-    <system:String x:Key="divClassNameThread">threadGrid</system:String>
-    <system:String x:Key="divClassNameThreadTitle">threadGrid-title js-contextual-message-placeholder</system:String>
-    <system:String x:Key="spanClassNameDiscount">overflow--fade</system:String>
-    <system:String x:Key="spanClassNameActualPrice">overflow--wrap-off</system:String>
-    <system:String x:Key="spanClassNamePreviousAndDiscount">flex--inline boxAlign-ai--all-c space--ml-2</system:String>
-    <system:String x:Key="spanClassNamePrevioudPrice">mute--text text--lineThrough size--all-l size--fromW3-xl cept-next-best-price</system:String>
-    <system:String x:Key="spanClassNameDiscountPercentage">space--ml-1 size--all-l size--fromW3-xl cept-discount</system:String>
-    <system:String x:Key="divClassNameHeaderMeta">threadGrid-headerMeta</system:String>
-    <system:String x:Key="divClassNameVoteBox">cept-vote-box vote-box overflow--hidden border border--color-borderGrey bRad--a</system:String>
-    <system:String x:Key="spanClassNameScoreHot">cept-vote-temp vote-temp vote-temp--hot</system:String>
-    <system:String x:Key="spanClassNameScoreBurn">cept-vote-temp vote-temp vote-temp--burn</system:String>
-    <system:String x:Key="divClassNameThreadBody">threadGrid-body</system:String>
-    <system:String x:Key="divClassNameThreadBodySpace">threadGrid-body space--v-1</system:String>
-    <system:String x:Key="divClassNameBodySpace">space--t-2 hide--empty</system:String>
-    <system:String x:Key="divClassNameSpaceContent">userHtml userHtml-content</system:String>
-    <system:String x:Key="buttonContentRefresh">Refresh</system:String>
-    <system:String x:Key="divClassNameUserHtml">userHtml userHtml-content</system:String>
-    <system:String x:Key="FROM">From</system:String>
-    <system:String x:Key="TO">To</system:String>
+    <system:String x:Key="PepperHomePageLink">https://www.pepper.pl/?page=</system:String>
+    <system:String x:Key="DivClassNameThread">threadGrid</system:String>
+    <system:String x:Key="DivClassNameThreadTitle">threadGrid-title js-contextual-message-placeholder</system:String>
+    <system:String x:Key="SpanClassNameDiscount">overflow--fade</system:String>
+    <system:String x:Key="SpanClassNameActualPrice">overflow--wrap-off</system:String>
+    <system:String x:Key="SpanClassNamePreviousAndDiscount">flex--inline boxAlign-ai--all-c space--ml-2</system:String>
+    <system:String x:Key="SpanClassNamePrevioudPrice">mute--text text--lineThrough size--all-l size--fromW3-xl cept-next-best-price</system:String>
+    <system:String x:Key="SpanClassNameDiscountPercentage">space--ml-1 size--all-l size--fromW3-xl cept-discount</system:String>
+    <system:String x:Key="DivClassNameHeaderMeta">threadGrid-headerMeta</system:String>
+    <system:String x:Key="DivClassNameVoteBox">cept-vote-box vote-box overflow--hidden border border--color-borderGrey bRad--a</system:String>
+    <system:String x:Key="SpanClassNameScoreHot">cept-vote-temp vote-temp vote-temp--hot</system:String>
+    <system:String x:Key="SpanClassNameScoreBurn">cept-vote-temp vote-temp vote-temp--burn</system:String>
+    <system:String x:Key="DivClassNameThreadBody">threadGrid-body</system:String>
+    <system:String x:Key="DivClassNameThreadBodySpace">threadGrid-body space--v-1</system:String>
+    <system:String x:Key="DivClassNameBodySpace">space--t-2 hide--empty</system:String>
+    <system:String x:Key="DivClassNameSpaceContent">userHtml userHtml-content</system:String>
+    <system:String x:Key="DivClassNameUserHtml">userHtml userHtml-content</system:String>
 </ResourceDictionary>

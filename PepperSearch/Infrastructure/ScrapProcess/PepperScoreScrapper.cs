@@ -39,7 +39,7 @@ namespace PepperSearch
                 strScore = strScore.Remove(strScore.Length - 1);
                 score = Convert.ToInt32(strScore);
             }
-            catch (InvalidOperationException) { }
+            catch (InvalidOperationException ex) { }
 
             return score;
         }
