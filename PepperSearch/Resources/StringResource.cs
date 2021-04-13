@@ -7,11 +7,131 @@ namespace PepperSearch
     /// </summary>
     public static class StringResource
     {
-        public static string PepperHomePageLink
+        public static string PepperLinkAll
         {
             get
             {
-                return (string)Application.Current.FindResource("PepperHomePageLink");
+                return (string)Application.Current.FindResource("PepperLinkAll");
+            }
+        }
+
+        public static string PepperLinkElectronics
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("PepperLinkElectronics");
+            }
+        }
+
+        public static string PepperLinkGaming
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("PepperLinkGaming");
+            }
+        }
+
+        public static string PepperLinkHome
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("PepperLinkHome");
+            }
+        }
+
+        public static string PepperLinkFashion
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("PepperLinkFashion");
+            }
+        }
+
+        public static string PepperLinkGarden
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("PepperLinkGarden");
+            }
+        }
+
+        public static string PepperLinkHealth
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("PepperLinkHealth");
+            }
+        }
+
+        public static string PepperLinkFamily
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("PepperLinkFamily");
+            }
+        }
+
+        public static string PepperLinkGroceries
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("PepperLinkGroceries");
+            }
+        }
+
+        public static string PepperLinkMotorization
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("PepperLinkMotorization");
+            }
+        }
+
+        public static string PepperLinkCulture
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("PepperLinkCulture");
+            }
+        }
+
+        public static string PepperLinkSport
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("PepperLinkSport");
+            }
+        }
+
+        public static string PepperLinkInternet
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("PepperLinkInternet");
+            }
+        }
+
+        public static string PepperLinkFinance
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("PepperLinkFinance");
+            }
+        }
+
+        public static string PepperLinkServices
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("PepperLinkServices");
+            }
+        }
+
+        public static string PepperLinkTravel
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("PepperLinkTravel");
             }
         }
 

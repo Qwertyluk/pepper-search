@@ -76,10 +76,12 @@ namespace PepperSearch
         {
             List<Discount> discounts = new List<Discount>();
 
+            string parameterName = "?page=";
+
             for (int i = startPage; i <= endPage; i++)
             {
                 HtmlProvider htmlProvider = new HtmlProvider();
-                string uri = StringResource.PepperHomePageLink + i;
+                string uri = GenerateGroupUri(group) + parameterName + i;
                 string html = await htmlProvider.GetHtmlAsync(uri);
 
                 HtmlDocument htmlDoc = new HtmlDocument();
@@ -107,9 +109,49 @@ namespace PepperSearch
             return discounts;
         }
 
-        /*private string GenerateUri(PepperGroup group)
+        /// <summary>
+        /// Returns the URI according to the group of interest.
+        /// </summary>
+        /// <param name="group">The group of interest</param>
+        /// <returns>The URI</returns>
+        private string GenerateGroupUri(PepperGroup group)
         {
-
-        }*/
+            switch(group){
+                case PepperGroup.All:
+                    return StringResource.PepperLinkAll;
+                case PepperGroup.Electronics:
+                    return StringResource.PepperLinkElectronics;
+                case PepperGroup.Gaming:
+                    return StringResource.PepperLinkGaming;
+                case PepperGroup.Home:
+                    return StringResource.PepperLinkHome;
+                case PepperGroup.Fashion:
+                    return StringResource.PepperLinkFashion;
+                case PepperGroup.Garden:
+                    return StringResource.PepperLinkGarden;
+                case PepperGroup.Health:
+                    return StringResource.PepperLinkHealth;
+                case PepperGroup.Family:
+                    return StringResource.PepperLinkFamily;
+                case PepperGroup.Groceries:
+                    return StringResource.PepperLinkGroceries;
+                case PepperGroup.Motorization:
+                    return StringResource.PepperLinkMotorization;
+                case PepperGroup.Culture:
+                    return StringResource.PepperLinkCulture;
+                case PepperGroup.Sport:
+                    return StringResource.PepperLinkSport;
+                case PepperGroup.Internet:
+                    return StringResource.PepperLinkInternet;
+                case PepperGroup.Finance:
+                    return StringResource.PepperLinkFinance;
+                case PepperGroup.Services:
+                    return StringResource.PepperLinkServices;
+                case PepperGroup.Travel:
+                    return StringResource.PepperLinkTravel;
+                default:
+                    return StringResource.PepperLinkAll;
+            }
+        }
     }
 }

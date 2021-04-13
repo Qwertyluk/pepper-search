@@ -1,7 +1,22 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
-    <system:String x:Key="PepperHomePageLink">https://www.pepper.pl/?page=</system:String>
+    <system:String x:Key="PepperLinkAll">https://www.pepper.pl/</system:String>
+    <system:String x:Key="PepperLinkElectronics">https://www.pepper.pl/grupa/elektronika/</system:String>
+    <system:String x:Key="PepperLinkGaming">https://www.pepper.pl/grupa/gry</system:String>
+    <system:String x:Key="PepperLinkHome">https://www.pepper.pl/grupa/dom-i-mieszkanie/</system:String>
+    <system:String x:Key="PepperLinkFashion">https://www.pepper.pl/grupa/moda/</system:String>
+    <system:String x:Key="PepperLinkGarden">https://www.pepper.pl/grupa/dom/</system:String>
+    <system:String x:Key="PepperLinkHealth">https://www.pepper.pl/grupa/zdrowie-i-uroda/</system:String>
+    <system:String x:Key="PepperLinkFamily">https://www.pepper.pl/grupa/dla-dzieci/</system:String>
+    <system:String x:Key="PepperLinkGroceries">https://www.pepper.pl/grupa/artykuly-spozywcze/</system:String>
+    <system:String x:Key="PepperLinkMotorization">https://www.pepper.pl/grupa/motoryzacja/</system:String>
+    <system:String x:Key="PepperLinkCulture">https://www.pepper.pl/grupa/rozrywka/</system:String>
+    <system:String x:Key="PepperLinkSport">https://www.pepper.pl/grupa/sport/</system:String>
+    <system:String x:Key="PepperLinkInternet">https://www.pepper.pl/grupa/internet-i-uslugi/</system:String>
+    <system:String x:Key="PepperLinkFinance">https://www.pepper.pl/grupa/finanse-i-ubezpieczenia/</system:String>
+    <system:String x:Key="PepperLinkServices">https://www.pepper.pl/grupa/uslugi-i-subskrypcje/</system:String>
+    <system:String x:Key="PepperLinkTravel">https://www.pepper.pl/grupa/podroze/</system:String>
     <system:String x:Key="DivClassNameThread">threadGrid</system:String>
     <system:String x:Key="DivClassNameThreadTitle">threadGrid-title js-contextual-message-placeholder</system:String>
     <system:String x:Key="SpanClassNameDiscount">overflow--fade</system:String>
