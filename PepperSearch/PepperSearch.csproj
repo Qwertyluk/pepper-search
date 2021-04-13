@@ -64,6 +64,7 @@
     <Compile Include="Infrastructure\HtmlAttributes.cs" />
     <Compile Include="Infrastructure\HtmlTags.cs" />
     <Compile Include="Infrastructure\HtmlProvider.cs" />
+    <Compile Include="Infrastructure\OppositeIntToBoolConverter.cs" />
     <Compile Include="Infrastructure\PepperGroupConverter.cs" />
     <Compile Include="Infrastructure\ScrapProcess\IActualPriceScrapper.cs" />
     <Compile Include="Infrastructure\ScrapProcess\IDescriptionScrapper.cs" />

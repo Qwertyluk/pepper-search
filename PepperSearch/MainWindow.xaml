@@ -31,6 +31,25 @@
                          TextAlignment="Center" PreviewTextInput="TxtTo_PreviewTextInput" />
             </StackPanel>
         </Grid>
+        <Grid DockPanel.Dock="Bottom" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label x:Name="LblSearchAbove" Content="{StaticResource SEARCH_ABOVE}"/>
+                <TextBox x:Name="TxtSearchAbove"
+                         VerticalContentAlignment="Center" MinWidth="200"
+                         TextAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label x:Name="LblSearchInPepper" Content="{StaticResource SEARCH_IN_PEPPER}"/>
+                <TextBox x:Name="TxtSearchInPepper" 
+                         Text="{Binding PepperSearchPhrase, UpdateSourceTrigger=PropertyChanged}"
+                         VerticalContentAlignment="Center" MinWidth="200"
+                         TextAlignment="Center"/>
+            </StackPanel>
+        </Grid>
         <Grid DockPanel.Dock="Bottom">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -48,87 +67,121 @@
             </Grid.RowDefinitions>
             <Grid.Resources>
                 <local:PepperGroupConverter x:Key="PepperGroupConverter"/>
+                <local:OppositeIntToBoolConverter x:Key="OppositeIntToBoolConverter"/>
             </Grid.Resources>
             <RadioButton x:Name="RdoAll" Grid.Row="0" Grid.Column="0"
                          Content="{StaticResource ALL}"
                          IsChecked="{Binding Path = PepperGroup, 
                             Converter = {StaticResource PepperGroupConverter},
-                            ConverterParameter = {x:Static local:PepperGroup.All}}"/>
+                            ConverterParameter = {x:Static local:PepperGroup.All}}"
+                         IsEnabled="{Binding Path=PepperSearchPhrase.Length, 
+                            Converter={StaticResource OppositeIntToBoolConverter}, Mode=OneWay}">
+            </RadioButton>
             <RadioButton x:Name="RdoElectronics" Grid.Row="0" Grid.Column="1"
                          Content="{StaticResource ELECTRONICS}"
                          IsChecked="{Binding Path = PepperGroup, 
                             Converter = {StaticResource PepperGroupConverter},
-                            ConverterParameter = {x:Static local:PepperGroup.Electronics}}"/>
+                            ConverterParameter = {x:Static local:PepperGroup.Electronics}}"
+                         IsEnabled="{Binding Path=PepperSearchPhrase.Length, 
+                            Converter={StaticResource OppositeIntToBoolConverter}, Mode=OneWay}"/>
             <RadioButton x:Name="RdoGaming" Grid.Row="0" Grid.Column="2"
                          Content="{StaticResource GAMING}"
                          IsChecked="{Binding Path = PepperGroup, 
                             Converter = {StaticResource PepperGroupConverter},
-                            ConverterParameter = {x:Static local:PepperGroup.Gaming}}"/>
+                            ConverterParameter = {x:Static local:PepperGroup.Gaming}}"
+                         IsEnabled="{Binding Path=PepperSearchPhrase.Length, 
+                            Converter={StaticResource OppositeIntToBoolConverter}, Mode=OneWay}"/>
             <RadioButton x:Name="RdoHome" Grid.Row="0" Grid.Column="3"
                          Content="{StaticResource HOME}"
                          IsChecked="{Binding Path = PepperGroup, 
                             Converter = {StaticResource PepperGroupConverter},
-                            ConverterParameter = {x:Static local:PepperGroup.Home}}"/>
+                            ConverterParameter = {x:Static local:PepperGroup.Home}}"
+                         IsEnabled="{Binding Path=PepperSearchPhrase.Length, 
+                            Converter={StaticResource OppositeIntToBoolConverter}, Mode=OneWay}"/>
             <RadioButton x:Name="RdoFashion" Grid.Row="0" Grid.Column="4"
                          Content="{StaticResource FASHION}"
                          IsChecked="{Binding Path = PepperGroup, 
                             Converter = {StaticResource PepperGroupConverter},
-                            ConverterParameter = {x:Static local:PepperGroup.Fashion}}"/>
+                            ConverterParameter = {x:Static local:PepperGroup.Fashion}}"
+                         IsEnabled="{Binding Path=PepperSearchPhrase.Length, 
+                            Converter={StaticResource OppositeIntToBoolConverter}, Mode=OneWay}"/>
             <RadioButton x:Name="RdoGarden" Grid.Row="0" Grid.Column="5"
                          Content="{StaticResource GARDEN}"
                          IsChecked="{Binding Path = PepperGroup, 
                             Converter = {StaticResource PepperGroupConverter},
-                            ConverterParameter = {x:Static local:PepperGroup.Garden}}"/>
+                            ConverterParameter = {x:Static local:PepperGroup.Garden}}"
+                         IsEnabled="{Binding Path=PepperSearchPhrase.Length, 
+                            Converter={StaticResource OppositeIntToBoolConverter}, Mode=OneWay}"/>
             <RadioButton x:Name="RdoHealth" Grid.Row="0" Grid.Column="6"
                          Content="{StaticResource HEALTH}"
                          IsChecked="{Binding Path = PepperGroup, 
                             Converter = {StaticResource PepperGroupConverter},
-                            ConverterParameter = {x:Static local:PepperGroup.Health}}"/>
+                            ConverterParameter = {x:Static local:PepperGroup.Health}}"
+                         IsEnabled="{Binding Path=PepperSearchPhrase.Length, 
+                            Converter={StaticResource OppositeIntToBoolConverter}, Mode=OneWay}"/>
             <RadioButton x:Name="RdoFamily" Grid.Row="0" Grid.Column="7"
                          Content="{StaticResource FAMILY}"
                          IsChecked="{Binding Path = PepperGroup, 
                             Converter = {StaticResource PepperGroupConverter},
-                            ConverterParameter = {x:Static local:PepperGroup.Family}}"/>
+                            ConverterParameter = {x:Static local:PepperGroup.Family}}"
+                         IsEnabled="{Binding Path=PepperSearchPhrase.Length, 
+                            Converter={StaticResource OppositeIntToBoolConverter}, Mode=OneWay}"/>
             <RadioButton x:Name="RdoGroceries" Grid.Row="1" Grid.Column="0"
                          Content="{StaticResource GROCERIES}"
                          IsChecked="{Binding Path = PepperGroup, 
                             Converter = {StaticResource PepperGroupConverter},
-                            ConverterParameter = {x:Static local:PepperGroup.Groceries}}"/>
+                            ConverterParameter = {x:Static local:PepperGroup.Groceries}}"
+                         IsEnabled="{Binding Path=PepperSearchPhrase.Length, 
+                            Converter={StaticResource OppositeIntToBoolConverter}, Mode=OneWay}"/>
             <RadioButton x:Name="RdoMotorization" Grid.Row="1" Grid.Column="1"
                          Content="{StaticResource MOTORIZATION}"
                          IsChecked="{Binding Path = PepperGroup, 
                             Converter = {StaticResource PepperGroupConverter},
-                            ConverterParameter = {x:Static local:PepperGroup.Motorization}}"/>
+                            ConverterParameter = {x:Static local:PepperGroup.Motorization}}"
+                         IsEnabled="{Binding Path=PepperSearchPhrase.Length, 
+                            Converter={StaticResource OppositeIntToBoolConverter}, Mode=OneWay}"/>
             <RadioButton x:Name="RdoCulture" Grid.Row="1" Grid.Column="2"
                          Content="{StaticResource CULTURE}"
                          IsChecked="{Binding Path = PepperGroup, 
                             Converter = {StaticResource PepperGroupConverter},
-                            ConverterParameter = {x:Static local:PepperGroup.Culture}}"/>
+                            ConverterParameter = {x:Static local:PepperGroup.Culture}}"
+                         IsEnabled="{Binding Path=PepperSearchPhrase.Length, 
+                            Converter={StaticResource OppositeIntToBoolConverter}, Mode=OneWay}"/>
             <RadioButton x:Name="RdoSport" Grid.Row="1" Grid.Column="3"
                          Content="{StaticResource SPORT}"
                          IsChecked="{Binding Path = PepperGroup, 
                             Converter = {StaticResource PepperGroupConverter},
-                            ConverterParameter = {x:Static local:PepperGroup.Sport}}"/>
+                            ConverterParameter = {x:Static local:PepperGroup.Sport}}"
+                         IsEnabled="{Binding Path=PepperSearchPhrase.Length, 
+                            Converter={StaticResource OppositeIntToBoolConverter}, Mode=OneWay}"/>
             <RadioButton x:Name="RdoInternet" Grid.Row="1" Grid.Column="4"
                          Content="{StaticResource INTERNET}"
                          IsChecked="{Binding Path = PepperGroup, 
                             Converter = {StaticResource PepperGroupConverter},
-                            ConverterParameter = {x:Static local:PepperGroup.Internet}}"/>
+                            ConverterParameter = {x:Static local:PepperGroup.Internet}}"
+                         IsEnabled="{Binding Path=PepperSearchPhrase.Length, 
+                            Converter={StaticResource OppositeIntToBoolConverter}, Mode=OneWay}"/>
             <RadioButton x:Name="RdoFinance" Grid.Row="1" Grid.Column="5"
                          Content="{StaticResource FINANCE}"
                          IsChecked="{Binding Path = PepperGroup, 
                             Converter = {StaticResource PepperGroupConverter},
-                            ConverterParameter = {x:Static local:PepperGroup.Finance}}"/>
+                            ConverterParameter = {x:Static local:PepperGroup.Finance}}"
+                         IsEnabled="{Binding Path=PepperSearchPhrase.Length, 
+                            Converter={StaticResource OppositeIntToBoolConverter}, Mode=OneWay}"/>
             <RadioButton x:Name="RdoServices" Grid.Row="1" Grid.Column="6"
                          Content="{StaticResource SERVICES}"
                          IsChecked="{Binding Path = PepperGroup, 
                             Converter = {StaticResource PepperGroupConverter},
-                            ConverterParameter = {x:Static local:PepperGroup.Services}}"/>
+                            ConverterParameter = {x:Static local:PepperGroup.Services}}"
+                         IsEnabled="{Binding Path=PepperSearchPhrase.Length, 
+                            Converter={StaticResource OppositeIntToBoolConverter}, Mode=OneWay}"/>
             <RadioButton x:Name="RdoTravel" Grid.Row="1" Grid.Column="7"
                          Content="{StaticResource TRAVEL}"
                          IsChecked="{Binding Path = PepperGroup, 
                             Converter = {StaticResource PepperGroupConverter},
-                            ConverterParameter = {x:Static local:PepperGroup.Travel}}"/>
+                            ConverterParameter = {x:Static local:PepperGroup.Travel}}"
+                         IsEnabled="{Binding Path=PepperSearchPhrase.Length, 
+                            Converter={StaticResource OppositeIntToBoolConverter}, Mode=OneWay}"/>
         </Grid>
         <DataGrid x:Name="DgData" Margin="5" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Path = Discounts}">
             <DataGrid.Columns>

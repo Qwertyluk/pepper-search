@@ -20,4 +20,6 @@
     <system:String x:Key="SERVICES">Services</system:String>
     <system:String x:Key="TRAVEL">Travel</system:String>
     <system:String x:Key="REFRESH">Refresh</system:String>
+    <system:String x:Key="SEARCH_ABOVE">Search above</system:String>
+    <system:String x:Key="SEARCH_IN_PEPPER">Search in pepper</system:String>
 </ResourceDictionary>

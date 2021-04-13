@@ -7,11 +7,11 @@ namespace PepperSearch
     /// </summary>
     public static class StringResource
     {
-        public static string PepperLinkAll
+        public static string PepperLinkBase
         {
             get
             {
-                return (string)Application.Current.FindResource("PepperLinkAll");
+                return (string)Application.Current.FindResource("PepperLinkBase");
             }
         }
 
@@ -135,6 +135,14 @@ namespace PepperSearch
             }
         }
 
+        public static string PepperLinkSearch
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("PepperLinkSearch");
+            }
+        }
+
         public static string DivClassNameThread
         {
             get
@@ -204,6 +212,22 @@ namespace PepperSearch
             get
             {
                 return (string)Application.Current.FindResource("DivClassNameVoteBox");
+            }
+        }
+
+        public static string SpanClassNameScoreColder
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("SpanClassNameScoreColder");
+            }
+        }
+
+        public static string SpanClassNameScoreWarm
+        {
+            get
+            {
+                return (string)Application.Current.FindResource("SpanClassNameScoreWarm");
             }
         }
 

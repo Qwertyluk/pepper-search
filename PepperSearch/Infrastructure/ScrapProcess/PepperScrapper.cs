@@ -71,17 +71,43 @@ namespace PepperSearch
         /// <summary>
         /// Scraps pepper website in asynchronous way.
         /// </summary>
-        /// <param name="number">Number of pages to scrap.</param>
-        public async Task<List<Discount>> ScrapDataAsync(int startPage, int endPage, PepperGroup group)
+        /// <param name="startPage">Start page</param>
+        /// <param name="endPage">End page</param>
+        /// <param name="group">Group</param>
+        /// <returns>Scraped data</returns>
+        public async Task<List<Discount>> GetDataAsync(int startPage, int endPage, PepperGroup group)
+        {
+            string parameterName = "?page=";
+            string baseUri = GenerateGroupUri(group) + parameterName;
+
+            return await ScrapDataAsync(startPage, endPage, baseUri);
+        }
+
+        /// <summary>
+        /// Scraps pepper website in asynchronous way.
+        /// </summary>
+        /// <param name="startPage">Start page</param>
+        /// <param name="endPage">End page</param>
+        /// <param name="group">Group</param>
+        /// <returns>Scraped data</returns>
+        public async Task<List<Discount>> GetDataAsync(int startPage, int endPage, string searchPhrase)
+        {
+            string searchParameterName = "?q=";
+            string pageParameterName = "&page=";
+            string baseUri = StringResource.PepperLinkSearch + searchParameterName + searchPhrase + pageParameterName;
+
+            return await ScrapDataAsync(startPage, endPage, baseUri);
+        }
+
+
+        private async Task<List<Discount>>ScrapDataAsync(int startPage, int endPage, string baseUri)
         {
             List<Discount> discounts = new List<Discount>();
-
-            string parameterName = "?page=";
 
             for (int i = startPage; i <= endPage; i++)
             {
                 HtmlProvider htmlProvider = new HtmlProvider();
-                string uri = GenerateGroupUri(group) + parameterName + i;
+                string uri = baseUri + i;
                 string html = await htmlProvider.GetHtmlAsync(uri);
 
                 HtmlDocument htmlDoc = new HtmlDocument();
@@ -118,7 +144,7 @@ namespace PepperSearch
         {
             switch(group){
                 case PepperGroup.All:
-                    return StringResource.PepperLinkAll;
+                    return StringResource.PepperLinkBase;
                 case PepperGroup.Electronics:
                     return StringResource.PepperLinkElectronics;
                 case PepperGroup.Gaming:
@@ -150,7 +176,7 @@ namespace PepperSearch
                 case PepperGroup.Travel:
                     return StringResource.PepperLinkTravel;
                 default:
-                    return StringResource.PepperLinkAll;
+                    return StringResource.PepperLinkBase;
             }
         }
     }

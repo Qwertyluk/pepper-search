@@ -34,9 +34,24 @@ namespace PepperSearch
                 {
                     strScore = childNode.Descendants(HtmlTags.SPAN).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.SpanClassNameScoreBurn).First().InnerHtml;
                 }
+                else if(childNode.ChildNodes.Any(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.SpanClassNameScoreWarm))
+                {
+                    strScore = childNode.Descendants(HtmlTags.SPAN).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.SpanClassNameScoreWarm).First().InnerHtml;
+                }
+                else if(childNode.ChildNodes.Any(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.SpanClassNameScoreColder))
+                {
+                    strScore = childNode.Descendants(HtmlTags.SPAN).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.SpanClassNameScoreColder).First().InnerHtml;
+                }
 
                 strScore = new string(strScore.Where(c => !Char.IsWhiteSpace(c)).ToArray()).RemoveWhitespace();
+                
+                if(strScore.Length <= 0)
+                {
+                    return 0;
+                }
+
                 strScore = strScore.Remove(strScore.Length - 1);
+
                 score = Convert.ToInt32(strScore);
             }
             catch (InvalidOperationException ex) { }

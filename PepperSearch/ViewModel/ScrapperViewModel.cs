@@ -78,6 +78,12 @@ namespace PepperSearch
             set;
         } = PepperGroup.All;
 
+        public string PepperSearchPhrase
+        {
+            get;
+            set;
+        } = String.Empty;
+
         private bool CanExecuteMethodScrapData(object parameter)
         {
             return true;
@@ -85,7 +91,17 @@ namespace PepperSearch
 
         private async void ExecuteMethodScrapData(object parameter)
         {
-            List<Discount> discounts = await this.Scrapper.ScrapDataAsync(this.StartPage, this.EndPage, this.PepperGroup);
+            List<Discount> discounts;
+
+            if(!String.IsNullOrEmpty(this.PepperSearchPhrase))
+            {
+                discounts = await this.Scrapper.GetDataAsync(this.StartPage, this.EndPage, this.PepperSearchPhrase);
+            }
+            else
+            {
+                discounts = await this.Scrapper.GetDataAsync(this.StartPage, this.EndPage, this.PepperGroup);
+            }
+            
             this.Discounts.Clear();
             discounts.ForEach(d => this.discounts.Add(d));
         }

@@ -8,6 +8,7 @@ namespace PepperSearch
 {
     public interface IScrapper
     {
-        Task<List<Discount>> ScrapDataAsync(int startPage, int endPage, PepperGroup group);
+        Task<List<Discount>> GetDataAsync(int startPage, int endPage, PepperGroup group);
+        Task<List<Discount>> GetDataAsync(int startPage, int endPage, string pepperSearchPhrase);
     }
 }
