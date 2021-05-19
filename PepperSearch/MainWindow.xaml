@@ -183,7 +183,30 @@
                          IsEnabled="{Binding Path=PepperSearchPhrase.Length, 
                             Converter={StaticResource OppositeIntToBoolConverter}, Mode=OneWay}"/>
         </Grid>
-        <DataGrid x:Name="DgData" Margin="5" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Path = Discounts}">
+        <DataGrid x:Name="DgData" Margin="5" AutoGenerateColumns="False" 
+                  IsReadOnly="True" ItemsSource="{Binding Path = Discounts}"
+                  local:DataGridTextSearch.SearchValue="{Binding ElementName=TxtSearchAbove, 
+                    Path=Text, UpdateSourceTrigger=PropertyChanged}">
+            <DataGrid.Resources>
+                <local:SearchValueConverter x:Key="SearchValueConverter"/>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="local:DataGridTextSearch.IsTextMatch">
+                        <Setter.Value>
+                            <MultiBinding Converter="{StaticResource SearchValueConverter}">
+                                <Binding RelativeSource="{RelativeSource Self}" 
+                                         Path="Content.Text"/>
+                                <Binding RelativeSource="{RelativeSource Self}" 
+                                         Path="(local:DataGridTextSearch.SearchValue)"/>
+                            </MultiBinding>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="local:DataGridTextSearch.IsTextMatch" Value="True">
+                            <Setter Property="Background" Value="Orange"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Title" Binding="{Binding Path = Title}" Width="3*">
                     <DataGridTextColumn.ElementStyle>

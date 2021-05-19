@@ -61,6 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Infrastructure\DataGridTextSearch.cs" />
     <Compile Include="Infrastructure\HtmlAttributes.cs" />
     <Compile Include="Infrastructure\HtmlTags.cs" />
     <Compile Include="Infrastructure\HtmlProvider.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Infrastructure\ScrapProcess\PepperLinkScrapper.cs" />
     <Compile Include="Infrastructure\ScrapProcess\PepperPreviousPriceScrapper.cs" />
     <Compile Include="Infrastructure\ScrapProcess\PepperScoreScrapper.cs" />
+    <Compile Include="Infrastructure\SearchValueConverter.cs" />
     <Compile Include="Model\Discount.cs" />
     <Compile Include="Infrastructure\ScrapProcess\PepperScrapper.cs" />
     <Compile Include="Infrastructure\ScrapProcess\PepperTitleScrapper.cs" />
