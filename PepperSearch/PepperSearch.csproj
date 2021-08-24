@@ -88,7 +88,6 @@
     <Compile Include="Model\Discount.cs" />
     <Compile Include="Infrastructure\ScrapProcess\PepperScrapper.cs" />
     <Compile Include="Infrastructure\ScrapProcess\PepperTitleScrapper.cs" />
-    <Compile Include="Infrastructure\PercentageConverter.cs" />
     <Compile Include="Infrastructure\PriceConverter.cs" />
     <Compile Include="Resources\StringResource.cs" />
     <Compile Include="Infrastructure\StringWhitespace.cs" />

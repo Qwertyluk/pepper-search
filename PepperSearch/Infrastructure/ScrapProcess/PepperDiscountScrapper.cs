@@ -26,12 +26,17 @@ namespace PepperSearch
                     .Descendants(HtmlTags.SPAN).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.SpanClassNamePreviousAndDiscount).First()
                     .Descendants(HtmlTags.SPAN).Where(n => n.GetAttributeValue(HtmlAttributes.CLASS, String.Empty) == StringResource.SpanClassNameDiscountPercentage).First().InnerText;
 
-                discount = new PercentageConverter().Convert(strDiscount, PercentagePlace.EndsWith);
+                discount = ConvertPercentage(strDiscount);
                 discount = Math.Abs(discount);
             }
             catch (InvalidOperationException) { }
 
             return discount;
+        }
+
+        private decimal ConvertPercentage(string input)
+        {
+            return Decimal.Parse(input.TrimEnd(new char[] { '%', ' ' })) / 100M;
         }
     }
 }
