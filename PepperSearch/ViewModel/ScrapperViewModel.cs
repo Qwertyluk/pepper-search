@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,8 +26,16 @@ namespace PepperSearch
                     this.scrapper = new PepperScrapper(
                         new PepperTitleScrapper(),
                         new PepperLinkScrapper(),
-                        new PepperActualPriceScrapper(new PriceConverter()),
-                        new PepperPreviousPriceScrapper(new PriceConverter()),
+                        new PepperActualPriceScrapper(
+                            new PriceConverter(
+                                ConfigurationManager.AppSettings.Get("pepperDiscountPriceCurrencySymbol"),
+                                ConfigurationManager.AppSettings.Get("pepperDiscountPriceGroupSeparator"),
+                                ConfigurationManager.AppSettings.Get("pepperDiscountPriceDecimalSeparator"))),
+                        new PepperPreviousPriceScrapper(
+                            new PriceConverter(
+                                ConfigurationManager.AppSettings.Get("pepperDiscountPriceCurrencySymbol"),
+                                ConfigurationManager.AppSettings.Get("pepperDiscountPriceGroupSeparator"),
+                                ConfigurationManager.AppSettings.Get("pepperDiscountPriceDecimalSeparator"))),
                         new PepperDiscountScrapper(),
                         new PepperScoreScrapper(),
                         new PepperDescriptionScrapper()

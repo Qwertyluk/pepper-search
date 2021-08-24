@@ -3,35 +3,38 @@ using System.Globalization;
 
 namespace PepperSearch
 {
-    /// <summary>
-    /// Class represents a price converter.
-    /// </summary>
     public class PriceConverter : IPriceConvertion
     {
-        /// <summary>
-        /// Converts a price from a string type to a decimal type.
-        /// </summary>
-        /// <param name="price">The price to be converted.</param>
-        /// <returns>Decimal value of the price.</returns>
+        private NumberFormatInfo numberFormatInfo;
+
+        public PriceConverter(string currencySymbol, string numberGroupSeparator, string numberDecimalSeparator)
+        {
+            InitializeNumberFormatInfo(currencySymbol, numberGroupSeparator, numberDecimalSeparator);
+        }
+
+        private void InitializeNumberFormatInfo(string currencySymbol, string numberGroupSeparator, string numberDecimalSeparator)
+        {
+            this.numberFormatInfo = (NumberFormatInfo)NumberFormatInfo.CurrentInfo.Clone();
+            this.numberFormatInfo.CurrencySymbol = currencySymbol;
+            this.numberFormatInfo.NumberGroupSeparator = numberGroupSeparator;
+            this.numberFormatInfo.NumberDecimalSeparator = numberDecimalSeparator;
+        }
+
         public decimal ConvertPrice(string price)
         {
-            NumberFormatInfo formatInfo = (NumberFormatInfo)NumberFormatInfo.CurrentInfo.Clone();
-            formatInfo.CurrencySymbol = "zł";
-            formatInfo.CurrencyGroupSeparator = ".";
-            formatInfo.CurrencyDecimalSeparator = ",";
-            formatInfo.NumberGroupSeparator = ".";
-            formatInfo.NumberDecimalSeparator = ",";
-            decimal ret;
+            return TryToParseDecimal(price);
+        }
+
+        private decimal TryToParseDecimal(string stringToParse)
+        {
             try
             {
-                ret = Decimal.Parse(price, NumberStyles.AllowCurrencySymbol | NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands, formatInfo);
+                return Decimal.Parse(stringToParse, NumberStyles.AllowCurrencySymbol | NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands, this.numberFormatInfo);
             }
             catch (FormatException ex)
             {
                 throw ex;
             }
-
-            return ret;
         }
     }
 }
