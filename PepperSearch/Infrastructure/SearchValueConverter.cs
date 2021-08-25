@@ -11,12 +11,10 @@ namespace PepperSearch
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            VerifyValues(values);
+            string inputText = values[0] == null ? String.Empty: values[0].ToString();
+            string textToFind = values[1] as string;
 
-            string inputText = values[0].ToString();
-            string textToFind = (string)values[1];
-
-            if (!CheckIfStringsAreEmpty(inputText, textToFind))
+            if (CheckIfStringsAreValid(inputText, textToFind))
             {
                 return CheckIfInputContainsText(inputText, textToFind);
             }
@@ -24,32 +22,14 @@ namespace PepperSearch
             return false;
         }
 
-        private void VerifyValues(object[] values)
+        private bool CheckIfStringsAreValid(string inputText, string textToFind)
         {
-            if (CheckIfValuesAreNull(values))
+            if (String.IsNullOrEmpty(inputText) || String.IsNullOrEmpty(textToFind))
             {
-                throw new ArgumentNullException("values");
-            }
-        }
-
-        private bool CheckIfValuesAreNull(object[] values)
-        {
-            if (values == null || values[0] == null || values[1] == null)
-            {
-                return true;
+                return false;
             }
 
-            return false;
-        }
-
-        private bool CheckIfStringsAreEmpty(string inputText, string textToFind)
-        {
-            if (inputText == String.Empty || textToFind == String.Empty)
-            {
-                return true;
-            }
-
-            return false;
+            return true;
         }
 
         private bool CheckIfInputContainsText(string inputText, string textToFind)

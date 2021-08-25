@@ -12,43 +12,45 @@ namespace PepperSearchTest
     public class SearchValueConverterTests
     {
         [TestMethod]
-        public void Convert_WhenFirstStringNull_ThrowsException()
+        public void Convert_WhenFirstStringNull_ReturnsFalse()
         {
             // Arrange
             object[] input = { null, "Test123" };
+            bool result = false;
 
-            // Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new SearchValueConverter().Convert(input, null, null, null));
+            // Act
+            bool output = (bool)new SearchValueConverter().Convert(input, null, null, null);
+
+            // Assert
+            Assert.AreEqual(result, output);
         }
 
         [TestMethod]
-        public void Convert_WhenSecondStringNull_ThrowsException()
+        public void Convert_WhenSecondStringNull_ReturnsFalse()
         {
             // Arrange
             object[] input = { "Test123", null };
+            bool result = false;
 
-            // Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new SearchValueConverter().Convert(input, null, null, null));
+            // Act
+            bool output = (bool)new SearchValueConverter().Convert(input, null, null, null);
+
+            // Assert
+            Assert.AreEqual(result, output);
         }
 
         [TestMethod]
-        public void Convert_WhenBothStringsNull_ThrowsException()
+        public void Convert_WhenBothStringsNull_ReturnsFalse()
         {
             // Arrange
             object[] input = { null, null };
+            bool result = false;
 
-            // Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new SearchValueConverter().Convert(input, null, null, null));
-        }
+            // Act
+            bool output = (bool)new SearchValueConverter().Convert(input, null, null, null);
 
-        [TestMethod]
-        public void Convert_WhenInputNull_ThrowsException()
-        {
-            // Arrange
-            object[] input = null;
-
-            // Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new SearchValueConverter().Convert(input, null, null, null));
+            // Assert
+            Assert.AreEqual(result, output);
         }
 
         [TestMethod]
