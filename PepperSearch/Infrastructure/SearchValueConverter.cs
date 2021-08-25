@@ -13,7 +13,7 @@ namespace PepperSearch
         {
             VerifyValues(values);
 
-            string inputText = (string)values[0];
+            string inputText = values[0].ToString();
             string textToFind = (string)values[1];
 
             if (!CheckIfStringsAreEmpty(inputText, textToFind))
