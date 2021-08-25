@@ -50,6 +50,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OppositeIntToBoolConverterTests.cs" />
     <Compile Include="PepperGroupConverterTests.cs" />
     <Compile Include="PriceConverterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
