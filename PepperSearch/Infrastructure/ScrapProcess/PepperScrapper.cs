@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace PepperSearch
@@ -40,6 +41,8 @@ namespace PepperSearch
         /// </summary>
         private readonly IDescriptionScrapper descriptionScrapper;
 
+        private readonly HttpClient httpClient;
+
         /// <summary>
         /// Creates an instance of the class.
         /// </summary>
@@ -51,6 +54,7 @@ namespace PepperSearch
         /// <param name="scoreScrapper">A score scrapper.</param>
         /// <param name="descriptionScrapper">A description scrapper.</param>
         public PepperScrapper(
+            HttpClient httpClient,
             ITitleScrapper titleScrapper,
             ILinkScrapper linkScrapper,
             IActualPriceScrapper actualPriceScrapper,
@@ -59,6 +63,7 @@ namespace PepperSearch
             IScoreScrapper scoreScrapper,
             IDescriptionScrapper descriptionScrapper)
         {
+            this.httpClient = httpClient;
             this.titleScrapper = titleScrapper;
             this.linkScrapper = linkScrapper;
             this.actualPriceScrapper = actualPriceScrapper;
@@ -95,7 +100,7 @@ namespace PepperSearch
             string searchParameterName = "?q=";
             string pageParameterName = "&page=";
             string baseUri = StringResource.PepperLinkSearch + searchParameterName + searchPhrase + pageParameterName;
-
+            
             return await ScrapDataAsync(startPage, endPage, baseUri);
         }
 
@@ -106,9 +111,8 @@ namespace PepperSearch
 
             for (int i = startPage; i <= endPage; i++)
             {
-                HtmlProvider htmlProvider = new HtmlProvider();
                 string uri = baseUri + i;
-                string html = await htmlProvider.GetHtmlAsync(uri);
+                string html = await this.httpClient.GetStringAsync(uri);
 
                 HtmlDocument htmlDoc = new HtmlDocument();
                 htmlDoc.LoadHtml(html);
