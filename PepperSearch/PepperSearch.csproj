@@ -41,6 +41,9 @@
     <Reference Include="HtmlAgilityPack, Version=1.11.31.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.11.31\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -84,6 +87,7 @@
     <Compile Include="Infrastructure\ScrapProcess\PepperPreviousPriceScrapper.cs" />
     <Compile Include="Infrastructure\ScrapProcess\PepperScoreScrapper.cs" />
     <Compile Include="Infrastructure\SearchValueConverter.cs" />
+    <Compile Include="IocConfiguration.cs" />
     <Compile Include="Model\Discount.cs" />
     <Compile Include="Infrastructure\ScrapProcess\PepperScrapper.cs" />
     <Compile Include="Infrastructure\ScrapProcess\PepperTitleScrapper.cs" />

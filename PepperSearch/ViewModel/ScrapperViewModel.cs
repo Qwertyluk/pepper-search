@@ -12,40 +12,11 @@ namespace PepperSearch
 {
     public class ScrapperViewModel
     {
-        private IScrapper scrapper;
+        private readonly IScrapper scrapper;
 
         private ObservableCollection<Discount> discounts;
 
         private ICommand scrapCommand;
-
-        public IScrapper Scrapper
-        {
-            get
-            {
-                if(this.scrapper == null)
-                {
-                    this.scrapper = new PepperScrapper(
-                        new HttpClient(),
-                        new PepperTitleScrapper(),
-                        new PepperLinkScrapper(),
-                        new PepperActualPriceScrapper(
-                            new PriceConverter(
-                                ConfigurationManager.AppSettings.Get("pepperDiscountPriceCurrencySymbol"),
-                                ConfigurationManager.AppSettings.Get("pepperDiscountPriceGroupSeparator"),
-                                ConfigurationManager.AppSettings.Get("pepperDiscountPriceDecimalSeparator"))),
-                        new PepperPreviousPriceScrapper(
-                            new PriceConverter(
-                                ConfigurationManager.AppSettings.Get("pepperDiscountPriceCurrencySymbol"),
-                                ConfigurationManager.AppSettings.Get("pepperDiscountPriceGroupSeparator"),
-                                ConfigurationManager.AppSettings.Get("pepperDiscountPriceDecimalSeparator"))),
-                        new PepperDiscountScrapper(),
-                        new PepperScoreScrapper(),
-                        new PepperDescriptionScrapper()
-                        );
-                }
-                return this.scrapper;
-            }
-        } 
 
         public ObservableCollection<Discount> Discounts
         {
@@ -95,6 +66,11 @@ namespace PepperSearch
             set;
         } = String.Empty;
 
+        public ScrapperViewModel(IScrapper scrapper)
+        {
+            this.scrapper = scrapper;
+        }
+
         private bool CanExecuteMethodScrapData(object parameter)
         {
             return true;
@@ -106,11 +82,11 @@ namespace PepperSearch
 
             if(!String.IsNullOrEmpty(this.PepperSearchPhrase))
             {
-                discounts = await this.Scrapper.GetDataAsync(this.StartPage, this.EndPage, this.PepperSearchPhrase);
+                discounts = await this.scrapper.GetDataAsync(this.StartPage, this.EndPage, this.PepperSearchPhrase);
             }
             else
             {
-                discounts = await this.Scrapper.GetDataAsync(this.StartPage, this.EndPage, this.PepperGroup);
+                discounts = await this.scrapper.GetDataAsync(this.StartPage, this.EndPage, this.PepperGroup);
             }
             
             this.Discounts.Clear();
