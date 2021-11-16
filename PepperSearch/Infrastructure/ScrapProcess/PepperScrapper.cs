@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace PepperSearch
@@ -40,6 +41,8 @@ namespace PepperSearch
         /// </summary>
         private readonly IDescriptionScrapper descriptionScrapper;
 
+        private readonly HttpClient httpClient;
+
         /// <summary>
         /// Creates an instance of the class.
         /// </summary>
@@ -57,7 +60,8 @@ namespace PepperSearch
             IPreviousPriceScrapper previousPriceScrapper,
             IDiscountScrapper discountScrapper,
             IScoreScrapper scoreScrapper,
-            IDescriptionScrapper descriptionScrapper)
+            IDescriptionScrapper descriptionScrapper,
+            HttpClient httpClient)
         {
             this.titleScrapper = titleScrapper;
             this.linkScrapper = linkScrapper;
@@ -66,6 +70,7 @@ namespace PepperSearch
             this.discountScrapper = discountScrapper;
             this.scoreScrapper = scoreScrapper;
             this.descriptionScrapper = descriptionScrapper;
+            this.httpClient = httpClient;
         }
 
         /// <summary>
@@ -106,7 +111,7 @@ namespace PepperSearch
 
             for (int i = startPage; i <= endPage; i++)
             {
-                HtmlProvider htmlProvider = new HtmlProvider();
+                HtmlProvider htmlProvider = new HtmlProvider(httpClient);
                 string uri = baseUri + i;
                 string html = await htmlProvider.GetHtmlAsync(uri);
 

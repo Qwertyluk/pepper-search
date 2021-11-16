@@ -8,6 +8,13 @@ namespace PepperSearch
     /// </summary>
     public class HtmlProvider
     {
+        private readonly HttpClient httpClient;
+
+        public HtmlProvider(HttpClient httpClient)
+        {
+            this.httpClient = httpClient;
+        }
+
         /// <summary>
         /// Returns the response body as a string in an asynchronous operation.
         /// </summary>
@@ -15,9 +22,8 @@ namespace PepperSearch
         /// <returns>The task object representing the asynchronous operation.</returns>
         public async Task<string> GetHtmlAsync(string uri)
         {
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Accept.Clear();
-            return await client.GetStringAsync(uri);
+            HttpResponseMessage responseMessage = await this.httpClient.GetAsync(uri);
+            return await responseMessage.Content.ReadAsStringAsync();
         }
     }
 }
