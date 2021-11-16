@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -22,6 +23,11 @@ namespace PepperSearch
             {
                 if(this.scrapper == null)
                 {
+                    HttpClient httpClient = new HttpClient();
+                    httpClient.DefaultRequestHeaders.Accept.Clear();
+                    httpClient.DefaultRequestHeaders.Add("user-agent",
+                        "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)");
+
                     this.scrapper = new PepperScrapper(
                         new PepperTitleScrapper(),
                         new PepperLinkScrapper(),
@@ -29,7 +35,8 @@ namespace PepperSearch
                         new PepperPreviousPriceScrapper(new PriceConverter()),
                         new PepperDiscountScrapper(),
                         new PepperScoreScrapper(),
-                        new PepperDescriptionScrapper()
+                        new PepperDescriptionScrapper(),
+                        httpClient
                         );
                 }
                 return this.scrapper;
